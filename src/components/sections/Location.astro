@@ -1,0 +1,40 @@
+---
+import { Icon } from "astro-icon";
+// import Carousel from "~/widgets/Carousel.astro";
+import Carousel from "~/components/widgets/Carousel.astro";
+import Section from "../core/Section.astro";
+
+---
+<Section sectionId="location">
+  <div class="section__content">
+    <h2>Location</h2>
+    <p class="font-normal">
+      Fort Punta Christo, Croatia
+    </p>
+    <p class="max-w-fit md:max-w-2xl mx-auto text-center">Punta Christo; The venue is an epic 200-year-old fortress located near Pula, Croatia.</p>
+
+		<p class="max-w-fit md:max-w-2xl mx-auto text-center">Pula itself has been inhabited for over 5,000 years and contains a range of historical treasures, from Neolithic era artifacts to monuments and architecture from the Roman Empire.</p>
+
+		<p class="max-w-fit md:max-w-2xl mx-auto text-center">Beyond its rich history, stunning sights, and delicious food, the area offers an array of exciting activities for all to enjoy. Discover more below!</p>
+
+		<Carousel />
+  </div>
+
+  <div class="decoration absolute w-10/12 md:w-2/12 xl:w-3/12 2xl:w-3/12 -right-32 top-16 z-0 opacity-60 2xl:opacity-100 invisible"
+  x-show="shown"
+  x-bind:class="{ 'invisible': !shown }"
+  x-transition:enter="transition ease-out duration-500"
+  x-transition:enter-start="opacity-08"
+  x-transition:enter-end="opacity-100"
+  x-transition:leave="transition ease-in duration-500"
+  x-transition:leave-start="opacity-100"
+  x-transition:leave-end="opacity-0"
+  >
+    <Icon name="island" className="w-full" />
+  </div>
+
+  <div class="section__decoration absolute opacity-30 xl:opacity-100 left-0  top-16 z-0 -scale-x-100">
+    <Icon name="fortgate-main" className="w-64 md:w-48 hidden xl:block" />
+    <Icon name="fortgate-alt" className="w-64 md:w-72 block xl:hidden" />
+  </div>
+</Section>

@@ -1,0 +1,20 @@
+---
+const { to, delay } = Astro.props;
+
+---
+
+<a
+  href={to}
+  x-show="menuOpen"
+  class="invisible scale-100 hover:scale-125 transition-transform duration-200 ease-in-out bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent text-2xl"
+  x-bind:class="{ 'invisible': !menuOpen, 'visible': menuOpen }"
+  x-transition:enter={`transition ease-out duration-500 delay-${delay ? delay : '300'}`}
+  x-transition:enter-start="opacity-0 transform translate-y-3"
+  x-transition:enter-end="opacity-100 transform translate-y-0"
+  x-transition:leave="transition ease-in duration-500"
+  x-transition:leave-start="opacity-100 transform translate-y-0"
+  x-transition:leave-end="opacity-0 transform translate-y-3"
+>
+  <slot />
+</a>
+

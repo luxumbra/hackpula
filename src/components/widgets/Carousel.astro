@@ -1,0 +1,115 @@
+---
+import { Picture } from '@astrojs/image/components';
+import { Icon } from 'astro-icon';
+// import { SITE } from '~/config.mjs';
+import slides from '~/data/carousel.json';
+---
+
+<!-- Slider main container -->
+<div class="carousel">
+  <div class="swiper w-full rounded-box border-l-4 border-b-4 border-accent relative">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      {
+        slides &&
+          slides.length > 0 &&
+          slides.map((slide) => {
+            const isVideo = slide.image.includes('youtube');
+            const image = `/assets/images/carousel/${slide.image}`;
+            const videoUrl = isVideo ? slide.image : '';
+
+            return isVideo ? (
+              <div class="swiper-slide swiper-slide__video group">
+                <iframe
+                  width="560"
+                  height="315"
+                  src={videoUrl}
+                  title={slide.title}
+                  class="w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  allowfullscreen
+                />
+								<div class="swiper-slide__content translate-y-0 group-hover:translate-y-20 group-hover:opacity-0 absolute bottom-auto top-0 md:top-auto md:bottom-0 left-0 px-3 md:px-8 transition-all duration-300 ease-in-out">
+                  <Icon name="map-marker" className="w-6 md:w-10 h-auto max-h-10 min-h-6 mr-2 flex-shrink-0" />
+                  <div class="group">
+                    <h4 class="font-bold">{slide.title}</h4>
+                    {slide.description && <p class="mb-0 w-full xl:w-3/4">{slide.description}</p>}
+                  </div>
+                </div>
+              </div>
+            ) : (
+              <div class="swiper-slide group">
+                <Picture
+                  class="hidden md:block"
+                  src={image}
+                  sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
+                  alt="Hero Image"
+                  widths={[400, 768, 1480]}
+                  aspectRatio={1480 / 833}
+                  loading="lazy"
+                  width={1480}
+                  height={833}
+                />
+
+                <Picture
+                  class="block md:hidden"
+                  src={image}
+                  sizes="(max-width: 767px) 400px, (max-width: 1479px) 768px, 1480px"
+                  alt="Hero Image"
+                  widths={[400, 768, 1480]}
+                  aspectRatio={833 / 1480}
+                  loading="lazy"
+                  width={400}
+                />
+								<div class="absolute -inset-1 inner-shadow z-10 rounded-3xl pointer-events-none" />
+                <div class="swiper-slide__content translate-y-0 md:group-hover:translate-y-20 md:group-hover:opacity-0 absolute bottom-auto top-0 md:top-auto md:bottom-0 left-0 px-3 md:px-8 transition-all duration-300 ease-in-out">
+                  <Icon name="map-marker" className="w-6 md:w-10 h-auto max-h-10 min-h-6 mr-2 flex-shrink-0" />
+                  <div class="group">
+                    <h4 class="font-bold">{slide.title}</h4>
+                    <p class="mb-0 w-full xl:w-3/4">{slide.description}</p>
+                  </div>
+                </div>
+              </div>
+            );
+          })
+      }
+    </div>
+
+    <div class="swiper-pagination pointer-events-none" />
+  </div>
+  <div class="swiper-button-prev -translate-x-5 md:-translate-x-16">
+    <Icon name="left-pointer" className="w-32 h-auto" />
+  </div>
+  <div class="swiper-button-next translate-x-5 md:translate-x-16">
+    <Icon name="right-pointer" class="w-32 h-auto min-h-16" />
+  </div>
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+<script type="module">
+  import Swiper from 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.esm.browser.min.js';
+
+  const swiper = new Swiper('.swiper', {
+    direction: 'horizontal',
+    loop: true,
+    effect: 'fade',
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
+
+  window.addEventListener('load', () => {
+    swiper.update();
+  });
+</script>

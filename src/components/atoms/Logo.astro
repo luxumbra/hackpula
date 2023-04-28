@@ -1,0 +1,34 @@
+---
+import { Icon } from 'astro-icon';
+
+const {count, tier, isExpansion} = Astro.props;
+---
+
+<div class={`tier tier--${count + 1}`}>
+  <div class="tier__header text-left">
+    <h4 class="mb-3 uppercase text-off-white">{tier.title}</h4>
+    <span class="tier__price text-4xl inline-flex text-off-white">
+      <>
+        <span class="tier__currency">$</span>
+        <strong class="font-normal">{tier.price}K</strong>
+      </>
+    </span>
+  </div>
+  <div class="tier__content relative text-left p-0 rounded-2xl">
+    <div class="p-3 z-10 rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark">
+      <p class="text-xl text-primary">{tier.summary}</p>
+      <div class="tier__perks text-left">
+        <h5 class="text-xl font-normal uppercase mb-3">{isExpansion ? 'Examples' : 'Perks'}:</h5>
+        <ul>
+          {tier.perks.map((perk) => (
+            <li>
+              <Icon name="ic:round-check-circle" class="h-auto max-w-8 w-10" />
+              <span>{perk.summary}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <div class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent to-transparent -z-10 pointer-events-nones" />
+  </div>
+</div>

@@ -1,0 +1,36 @@
+---
+import { SITE } from '~/config.mjs';
+import { getCanonical, getHomePermalink } from '~/utils/permalinks';
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero, { HeroProps } from '~/components/widgets/Hero.astro';
+import ThreeD from '~/components/widgets/ThreeD';
+import Plants from '~/components/widgets/Plants.astro';
+
+const meta = {
+  title: SITE.title,
+  description: SITE.description,
+  canonical: getCanonical(getHomePermalink()),
+};
+
+const heroCopy: HeroProps = {
+  titleLn1: 'Hack Pula',
+  titleLn2: '',
+  subtitle: 'Coming soon',
+  ctaUrl: '/#join',
+  cta2Url: '/#join',
+  dates: 'August 13-15th',
+};
+---
+
+<Layout {meta}>
+  <Hero
+    titleLn1={heroCopy.titleLn1}
+    titleLn2={heroCopy.titleLn2}
+    subtitle={heroCopy.subtitle}
+    ctaUrl={heroCopy.ctaUrl}
+    dates={heroCopy.dates}
+  />
+  <Plants />
+  <ThreeD client:load />
+</Layout>

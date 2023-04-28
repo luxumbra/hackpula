@@ -1,0 +1,56 @@
+---
+import './header.css';
+import { motion } from 'framer-motion';
+import { Icon } from 'astro-icon';
+// import ToggleTheme from '~/components/core/ToggleTheme.astro';
+---
+
+<header class="header" x-data="{ shown: false }" x-intersect="shown = true" x-intersect:end="shown = false">
+  <div class="header__primary">
+    <menu class="header__menu--desktop hidden xl:flex">
+      <a href="/#about">About</a>
+      <a href="/#location">Location</a>
+      <a href="/#activities">Activities</a>
+      <a href="/#start">
+        <Icon name="logo" className="logo min-w-fit w-24 3xl:w-32 h-auto" />
+      </a>
+      <a href="/#speakers">Speakers</a>
+      <a href="/#sponsors">Sponsors</a>
+      <a href="/#join">Join</a>
+      <a
+        href="/tickets"
+        class="absolute group right-5 3xl:right-10 top-1/4 -translate-y-1/4 3xl:-translate-y-0 px-3 3xl:px-5 py-1 3xl:py-3 font-bold btn btn-ghost bg-gradient-tertiary focus:outline-primary focus:text-secondary-dark outline-dashed transition-all duration-200 ease-in-out"
+        >Tickets</a
+      >
+    </menu>
+
+    <motion.a
+      href="/#start"
+      className="flex md:hidden"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: false }}
+      transition={{ duration: 0.3, delay: 0.1 }}
+      client:load
+    >
+      <Icon name="logo" className="logo min-w-fit w-20 h-auto" />
+    </motion.a>
+  </div>
+</header>
+
+<script>
+  if (typeof window !== 'undefined') {
+    const header = document.querySelector('.header');
+
+    // function to toggle the header class on scroll
+    const scrollHeader = () => {
+      if (window.scrollY > 0) {
+        header.classList.add('header--scrolled');
+      } else {
+        header.classList.remove('header--scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', scrollHeader);
+  }
+</script>

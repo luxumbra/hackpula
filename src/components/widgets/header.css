@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .header {
+    @apply fixed bg-accent-light-alpha-30 text-secondary text-center w-full z-20 transition-all duration-200 h-16 md:h-20 3xl:h-28;
+
+    &__primary {
+      @apply flex justify-around items-center max-w-4xl 2xl:max-w-5xl 3xl:max-w-7xl mx-auto py-1 3xl:py-4 transition-all duration-200;
+    }
+
+    .logo {
+      @apply transition-all duration-200;
+
+      path {
+        @apply !fill-current !text-secondary-dark transition-colors duration-200;
+      }
+
+      &:hover {
+        path {
+          @apply !text-primary;
+        }
+      }
+    }
+
+    &__menu {
+      @apply flex items-center content-center;
+
+      &--desktop {
+        @apply w-full justify-between;
+
+        a {
+          @apply text-secondary-dark text-base outline-none 2xl:text-xl 4xl:text-2xl font-sans uppercase inline-flex items-center px-4 transition-colors duration-200;
+          @apply hover:text-primary focus:text-primary;
+
+          &:last-child {
+            @apply hover:text-secondary-dark hover:scale-125 hover:rotate-6 shadow-black shadow-md hover:shadow-xl transition-all duration-200 ease-in-out;
+            @apply focus:text-secondary-dark;
+          }
+        }
+      }
+    }
+    &--scrolled {
+      @apply backdrop-blur-lg bg-accent-light-alpha-60 h-12 md:h-16 3xl:h-20;
+
+      .logo {
+        @apply w-14 md:w-20;
+      }
+
+      .btn {
+        @apply scale-90 3xl:scale-95 3xl:-translate-y-[15%];
+      }
+    }
+  }
+}

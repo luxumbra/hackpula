@@ -1,0 +1,122 @@
+---
+import { Icon } from 'astro-icon';
+import NavItem from '~/components/atoms/NavItem.astro';
+import Plants from '~/components/widgets/Plants.astro';
+import ThreeD from '~/components/widgets/ThreeD';
+---
+
+<script>
+	if (typeof window !== 'undefined') {
+		const menuItems = document.querySelectorAll('.mobile-menu a');
+
+		menuItems.forEach((item) => {
+			item.addEventListener('click', () => {
+				document.querySelector('.mobile-menu').classList.remove('visible');
+				document.querySelector('.mobile-menu').classList.add('invisible');
+			});
+		});
+	}
+
+</script>
+
+<div
+  class="toolbar fixed overflow-y-visible flex items-center justify-end w-ful0 h-10 left-0 bottom-0 right-0 md:hidden z-50"
+  x-data="{ menuOpen: false, shown: false, toggleMenu() { this.menuOpen = !this.menuOpen; } }"
+  x-intersect="shown = true"
+  x-intersect:leave="shown = false"
+>
+  <div
+    class="flex items-center justify-end w-full h-full border-t-[1px] bg-secondary-alpha-30 border-accent-light backdrop-blur-lg invisible"
+    x-show="shown"
+    x-bind:class="{ 'invisible': !shown }"
+    x-transition:enter="transition ease-out duration-200"
+    x-transition:enter-start="opacity-0 transform translate-y-8"
+    x-transition:enter-end="opacity-100 transform translate-y-0"
+    x-transition:leave="transition ease-in duration-500"
+    x-transition:leave-start="opacity-100 transform translate-y-0"
+    x-transition:leave-end="opacity-0 transform translate-y-8"
+  >
+    <button
+      x-on:click="menuOpen = !menuOpen"
+      type="button"
+      class="btn btn-ghost ml-1.5 text-primary hover:bg-transparent focus:outline-none focus:ring-2 focus:ring-primary-alpha-60 focus:bg-transparent p-0 items-center transition z-50"
+      aria-label="Menu toggle"
+    >
+      <Icon
+        name="tabler:menu"
+        class="w-10 h-10"
+        x-bind:class="{'hidden': menuOpen, 'block': !menuOpen}"
+        optimize={false}
+      />
+      <Icon
+        name="mdi:close"
+        class="w-10 h-10 hidden"
+        x-bind:class="{'hidden': !menuOpen, 'block': menuOpen}"
+        optimize={false}
+      />
+    </button>
+    <template x-teleport="body">
+      <div
+        x-show="menuOpen"
+        x-ref="mobileMenu"
+        x-trap.noscroll="menuOpen"
+				@keydown.escape="isOpen = false"
+        x-bind:class="{'visible': menuOpen, 'invisible': !menuOpen}"
+        class="mobile-menu fixed md:hidden h-screen w-screen inset-0 z-40"
+        x-transition:enter="transition ease-out duration-300 transform"
+        x-transition:enter-start="opacity-0 transform translate-y-full"
+        x-transition:enter-end="opacity-100 transform translate-y-0"
+        x-transition:leave="transition ease-in duration-300 transform"
+        x-transition:leave-start="opacity-100 transform translate-y-0"
+        x-transition:leave-end="opacity-0 transform translate-y-full"
+      >
+        <menu
+          class="relative flex flex-col pb-36 justify-end items-center content-center space-y-5 h-screen w-screen inset-0 z-10"
+        >
+          <NavItem to="/#start" delay="300">
+            <Icon name="logo" className="logo group min-w-fit w-32 h-auto fill-primary" />
+          </NavItem>
+          <NavItem to="/#about">About</NavItem>
+          <NavItem to="/#location">Location</NavItem>
+          <NavItem to="/#activities">Activities</NavItem>
+          <NavItem to="/#speakers">Speakers</NavItem>
+          <NavItem to="/#sponsors">Sponsors</NavItem>
+          <NavItem to="/#join">Join</NavItem>
+          <a
+            href="/tickets"
+            class="px-5 py-3 font-bold btn bg-gradient-tertiary text-secondary-dark hover:text-secondary-dark hover:bg-gradient-alt transition-all duration-200 ease-in-out"
+            >Tickets</a
+          >
+        </menu>
+				<div class="absolute bottom-8 z-20 w-full flex items-center justify-between py-6 md:py-8 px-5">
+					<div class="text-sm py-2  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent">
+						🐙 <a class="hover:underline hover:text-off-white transition-all duration-200" href="https://metagame.wtf/" target="_blank" rel="noopener" >MetaFam</a> 🐙
+					</div>
+					<div class="flex items-center justify-end space-x-3">
+						<!-- <a
+						class="inline-block items-center justify-center w-10 h-10 p-1 bg-customDarkBg2 custom-border-gray  hover:bg-accent-alpha-60 rounded-xl"
+						href="https://twitter.com/MetaFam" target="_blank" rel="noreferrer"
+					>
+						<Icon name="metagame" class="fill-primary w-full"/>
+					</a> -->
+						<a
+							class="inline-block w-10 h-10 p-1 bg-customDarkBg2 custom-border-gray  hover:bg-accent-alpha-60 rounded-xl"
+							href="https://twitter.com/MetaFam" target="_blank" rel="noreferrer"
+						>
+							<Icon name="mdi:twitter" class="fill-primary"/>
+						</a>
+						<a
+						class="inline-block w-10 h-10 p-1 bg-customDarkBg2 custom-border-gray  hover:bg-accent-alpha-60 rounded-xl"
+						href="https://t.me/+qIDukhuLnwg5ZTI0" target="_blank" rel="noreferrer"
+					>
+						<Icon name="mdi:telegram" class="fill-primary" />
+					</a>
+					</div>
+				</div>
+        <div class="absolute z-0">
+          <ThreeD client:load />
+        </div>
+      </div>
+    </template>
+  </div>
+</div>

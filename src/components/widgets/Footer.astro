@@ -1,0 +1,65 @@
+---
+import { Icon } from 'astro-icon';
+import { DateTime } from 'luxon';
+// import { Icon } from 'astro-icon';
+// import { getHomePermalink, getRelativeLink } from '~/utils/permalinks';
+
+// const links = [
+// 	{
+// 		title: 'MetaFest',
+// 		items: [
+// 			{ title: 'About', href: '/#about' },
+// 			{ title: 'Location', href: '/#location' },
+// 			{ title: 'Program', href: '/#program' },
+// 			{ title: 'Speakers', href: '/#speakers' },
+// 			{ title: 'Sponsors', href: '/#sponsors' },
+// 		],
+// 	},
+// 	{
+// 		title: 'MetaGame',
+// 		items: [
+// 			{ title: 'Join', href: 'https://metagame.wtf', external: true },
+// 			{ title: 'Quests', href: 'https://metagame.wtf/quests', external: true  },
+// 			{ title: 'Players', href: 'https://metagame.wtf/players', external: true  },
+// 			{ title: 'Wiki', href: 'https://wiki.metagame.wtf', external: true  },
+// 			{ title: 'Forum', href: 'https://forum.metagame.wtf', external: true  },
+// 		],
+// 	},
+// ];
+
+// const social = [
+// 	{ label: 'Twitter', icon: 'tabler:brand-twitter', href: '#' },
+// 	{ label: 'Discord', icon: 'tabler:brand-discord', href: '#' },
+// 	{ label: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/metafam' },
+// 	{ label: 'RSS', icon: 'tabler:rss', href: getRelativeLink('/rss.xml') },
+// ];
+const thisYear = DateTime.local().year;
+---
+
+<footer class="group absolute w-full xl:h-32 2xl:h-32 bottom-0 left-0 z-10 overflow-hidden ">
+	<div class="absolute bottom-0 left-0 w-full bg-transparent backdrop-blur-2xl group-hover:bg-secondary-alpha-60 transition duration-200 ease-in-out opacity-0 group-hover:opacity-100 translate-y-20 group-hover:translate-y-0 invisible group-hover:visible">
+		<div class="max-w-6xl mx-auto h-auto px-4 sm:px-6">
+
+			<div class="md:flex md:items-center md:justify-between  py-6 md:py-8">
+
+				<div class="text-sm bg-clip-text text-transparent bg-gradient-to-r from-accent via-primary to-accent opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200 delay-200">
+					🐙 {thisYear} <a class="hover:underline hover:text-off-white transition-all duration-200" href="https://metagame.wtf/" target="_blank" rel="noopener" >MetaFam</a> 🐙
+				</div>
+				<div class="flex items-center justify-end">
+					<a
+						class="inline-block w-10  h-10 lg:mr-2 p-2 bg-customDarkBg2 custom-border-gray  hover:bg-accent-alpha-60 rounded-xl"
+						href="https://twitter.com/MetaFam" target="_blank" rel="noreferrer"
+					>
+						<Icon name="mdi:twitter" class="fill-off-white"/>
+					</a>
+					<a
+					class="inline-block w-10  h-10 lg:mr-2 p-2 bg-customDarkBg2 custom-border-gray  hover:bg-accent-alpha-60 rounded-xl"
+					href="https://t.me/+qIDukhuLnwg5ZTI0" target="_blank" rel="noreferrer"
+				>
+					<Icon name="mdi:telegram" class="fill-off-white" />
+				</a>
+				</div>
+			</div>
+		</div>
+	</div>
+</footer>

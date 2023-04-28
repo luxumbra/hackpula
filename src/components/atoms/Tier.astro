@@ -1,0 +1,57 @@
+---
+import { Icon } from 'astro-icon';
+
+import './tier.css';
+
+const { count, tier, isExpansion } = Astro.props;
+---
+
+<div class={`tier tier--${count + 1}`}>
+  <div class="tier__header text-left">
+    <h4 class="mb-3 uppercase bg-clip-text text-transparent bg-gradient-to-r from-primary to-accent">{tier.title}</h4>
+    <span class="tier__price text-2xl 3xl:text-4xl inline-flex text-off-white">
+      <>
+        <span class="tier__currency">$</span>
+        <strong class="font-normal">{tier.price}K</strong>
+      </>
+    </span>
+  </div>
+  <div class="tier__content relative text-left p-0 rounded-2xl flex-grow">
+    <div class="p-5 z-10 flex flex-col rounded-2xl bg-gradient-to-b from-secondary to-secondary-dark-alpha-60 h-full">
+      <p class="text-sm xl:text-xl text-primary">{tier.summary}</p>
+      <div class="tier__perks text-left flex-grow">
+        <h5 class="text-off-white text-base 3xl:text-lg font-semibold uppercase mb-3">
+          {isExpansion ? 'Examples' : 'Perks'}:
+        </h5>
+        <ul>
+          {
+            tier.perks.map((perk) => (
+              <li>
+                <Icon name="ic:round-check-circle" />
+                <span>{perk.summary}</span>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+      <div class="text-center justify-self-end">
+        <button
+          class="cta__join-button btn btn-ghost bg-gradient-tertiary text-secondary hover:scale-95 focus:outline-dashed focus:outline-primary w-auto mx-auto"
+          data-tally-open="w2XEaj"
+          data-tally-layout="modal"
+          data-tally-width="800"
+          data-tally-align-left="1"
+          data-tally-emoji-text="👋"
+          data-tally-emoji-animation="wave"
+          data-tally-auto-close="5000"
+        >
+          Apply
+        </button>
+      </div>
+    </div>
+    <div
+      class="absolute -inset-[1px] rounded-2xl bg-gradient-to-b from-accent via-transparent to-transparent -z-10 pointer-events-none"
+    >
+    </div>
+  </div>
+</div>

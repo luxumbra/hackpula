@@ -1,0 +1,16 @@
+---
+export interface SectionProps {
+  sectionId: string;
+}
+
+const { sectionId } = Astro.props as SectionProps;
+---
+
+<section
+  x-data="{ shown: false }"
+  id={sectionId}
+  class="section relative"
+  x-intersect:once="shown = true"
+>
+  <slot />
+</section>

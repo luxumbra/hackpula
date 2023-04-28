@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .animated-plants {
+    @apply absolute inset-0 h-full w-full z-0;
+
+    &__plant-group {
+      @apply absolute;
+    }
+  }
+}

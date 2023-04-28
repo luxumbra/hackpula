@@ -1,0 +1,11 @@
+---
+import Layout from '~/layouts/BaseLayout.astro';
+
+const { meta } = Astro.props;
+---
+
+<Layout {meta}>
+	<main>
+		<slot />
+	</main>
+</Layout>

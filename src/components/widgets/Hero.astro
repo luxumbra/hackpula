@@ -1,0 +1,50 @@
+---
+// import { Icon } from 'astro-icon';
+import { Picture } from '@astrojs/image/components';
+import { Icon } from 'astro-icon';
+import { motion } from 'framer-motion';
+
+import heroImageLg from '~/assets/images/hero/hero-castle-full.jpg';
+import heroImageSm from '~/assets/images/hero/hero-castle-sm.jpg';
+// import heroImageLg from '~/assets/images/hero/metafest.jpg';
+// import heroImageSm from '~/assets/images/hero/metafest.png';
+
+export interface HeroProps {
+  titleLn1: string;
+  titleLn2: string;
+  subtitle: string;
+  dates: string;
+  ctaUrl: string;
+  ctaUrl2: string;
+}
+
+const { titleLn1, titleLn2, subtitle, dates, ctaUrl, ctaUrl2 } = Astro.props as HeroProps;
+---
+
+<div id="start" class="hero relative flex w-full h-screen p-0 overflow-hidden">
+  <div class="hero__content h-full w-full lg:w-10/12 px-3 2xl:px-16 py-28 justify-start items-center">
+    <motion.div
+      className="hero__content__primary"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      client:load
+    >
+      <div class="event-info w-full">
+        <Icon name="logo" class="logo" />
+        <h1 class="hero__title">{titleLn1}<br /> {titleLn2}</h1>
+        <p class="hero__dates"><Icon name="calendar" />{dates}</p>
+        <div class="cta-container flex flex-col gap-y-5 w-full p-3">
+          <button class="btn btn-ghost btn-block btn-brand-ghost text-primary"><span>Notify Me</span></button>
+          <button class="btn btn-ghost btn-block btn-brand text-secondary">Apply</button>
+        </div>
+      </div>
+      <p class="text-white font-normal text-lg text-center">{subtitle}</p>
+    </motion.div>
+  </div>
+  <motion.div
+    className="hero__image absolute w-full h-full inset-0 overflow-hidden"
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    client:load
+  />
+</div>

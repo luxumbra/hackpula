@@ -1,0 +1,71 @@
+---
+import { Icon } from 'astro-icon';
+import { PlantsAnimated } from '~/components/atoms/PlantsAnimated';
+
+type PlantProps = {
+  plantName: string;
+  position?: PlantPosition;
+  color?: string;
+  size?: string;
+  className?: string;
+};
+
+type PlantPosition = {
+  x: string;
+  y: string;
+  z: string;
+};
+
+const { plantName, position, color, size, className } = Astro.props as PlantProps;
+const plant = `plants/${plantName}`;
+---
+
+<script>
+  const plants = document.querySelector('.plants');
+  const particles = plants.querySelectorAll('svg > g > circle');
+  const maxRadius = 20;
+  const maxX = plants.clientWidth - maxRadius;
+  const maxY = plants.clientHeight - maxRadius;
+
+  // const random = (min, max) => {
+  //   return Math.random() * (max - min) + min;
+  // };
+
+  const startTime = Date.now();
+
+  const animate = () => {
+    const currentTime = Date.now(),
+      time = (currentTime - startTime) / 1000;
+
+    particles.forEach((particle, index) => {
+      const speed = 0.005;
+      const amplitude = 10;
+      const x = Math.sin(time * speed + index * 2) * amplitude;
+      const y = Math.cos(time * speed + index * 10) * amplitude;
+      // const dx = Math.min(maxX, Math.max(-maxX, x));
+      const dy = Math.min(maxY, Math.max(-maxY, y));
+      const scale = Math.sin(time * speed + index) * 0.5 + 1;
+
+      particle.setAttribute('transform', `translate(${x}, ${dy}) scale(${scale})`);
+    });
+    requestAnimationFrame(animate);
+  };
+
+  requestAnimationFrame(animate);
+</script>
+
+<style define:vars={{ color, size }}>
+  .plant {
+    svg {
+      max-width: var(--size);
+
+      path {
+        fill: var(--color);
+      }
+    }
+  }
+</style>
+
+<div class:list={['plant absolute pointer-events-none', size, position?.x, position?.y, position?.z, className]}>
+  <Icon name={plant} class="h-auto group" />
+</div>

@@ -1,0 +1,107 @@
+---
+import { Image, Picture } from '@astrojs/image/components';
+import { Icon } from 'astro-icon';
+import { motion } from 'framer-motion';
+// import Section from '../core/Section.astro';
+import SponsorsSection from '~/components/core/SponsorsSection.astro';
+
+export interface ChatMessage {
+  user: string;
+  message: string;
+  status: 'sent' | 'delivered' | 'read';
+}
+
+export const aboutSections = [
+  {
+    title: 'A Merge of Minds & Cultures',
+    items: [
+      'Join a mix of DAOists, regens, pre-DAO DOers & pre-ReFi regens',
+      'Soak in a fusion of revolutionary thinking, decentralized organizing & personal growth',
+    ],
+    img: '/assets/images/mj/minds-cultures-3.png',
+  },
+  {
+    title: 'Empowering Talks & Workshops',
+    items: [
+      'Dive into metacrisis, coordination & regeneration - or the deep blue sea',
+      'Learn best DAOing practices & get your work-life balance w/ tightrope & meditation',
+    ],
+    img: '/assets/images/mj/aztec-yay-3.png',
+  },
+  {
+    title: 'Good Vibes & Adventures',
+    items: [
+      'Forge lasting friendships while exploring national parks or battling in paintball',
+      'Consider a week-long bus trip down the beautiful coast of Croatia to Dubrovnik',
+    ],
+    img: '/assets/images/mj/aztec-bus.png',
+  },
+];
+---
+
+<SponsorsSection
+  sectionId="about"
+  title="About the festival"
+  precision="Talks, workshops, games & music; a festival for DAOists and Regens."
+  full
+  alt
+>
+  <motion.div
+    initial={{ opacity: 0, y: 20 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: false }}
+    transition={{ duration: 0.5, delay: 0.1 }}
+    client:load
+  >
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 3xl:gap-8 mt-16 items-stretch">
+      {
+        aboutSections &&
+          aboutSections.map((section, i) => {
+            const delay = parseFloat(((i + 1) * 0.1).toFixed(1));
+
+            return (
+              <motion.div
+                className="about-card relative text-center rounded-2xl overflow-hidden p-[1px]"
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.3, delay: delay * 2 }}
+                client:load
+              >
+                <div class="relative p-3 2xl:p-4 3xl:p-8 z-10 rounded-2xl flex-col h-full overflow-hidden">
+                  <div class="relative z-[2]">
+                    <h3 class="text-xl font-semibold mb-4 flex-shrink font-sans">{section.title}</h3>
+                    <ul class="text-primary mt-48 mb-0 w-full p-3 3xl:p-4 rounded-2xl backdrop-blur-sm bg-gradient-to-t from-secondary-dark-alpha-60 to-secondary-dark-alpha-30">
+                      {section.items &&
+                        section.items.map((item) => {
+                          return (
+                            <li class="text-primary text-sm">
+                              <Icon name="sea-and-sun" class="mr-0 3xl:mr-1" /> {item}
+                            </li>
+                          );
+                        })}
+                    </ul>
+                  </div>
+                  <div class="inner-shadow absolute -inset-3 z-[1] rounded-3xl" />
+                </div>
+                <Picture
+                  src={section.img}
+                  class="rounded-2xl absolute inset-1 bottom-auto md:bottom-0 top-0 md:top-auto  w-full h-auto z-0"
+                  alt={section.title}
+                  sizes="(max-width: 400px) 400px, (max-width: 767px) 768px, 1280px"
+                  widths={[400, 500]}
+                  aspectRatio={1}
+                  loading="lazy"
+                  width={500}
+                  formats={['webp', 'avif', 'jpeg']}
+                  fit="cover"
+                />
+                <div class="absolute inset-[1px] rounded-2xl bg-gradient-to-b from-secondary-dark to-secondary-alpha-90  -z-[5] pointer-events-none" />
+                <div class="absolute inset-0 rounded-2xl bg-gradient-to-b from-accent to-accent -z-10 pointer-events-none" />
+              </motion.div>
+            );
+          })
+      }
+    </div>
+  </motion.div>
+</SponsorsSection>

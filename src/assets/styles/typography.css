@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-accent;
+
+    h1,
+    h2,
+    h3 {
+      @apply font-heading text-primary text-4xl xl:text-6xl;
+    }
+
+    h2 {
+      @apply mb-3 2xl:mb-6 4xl:mb-10 text-4xl 2xl:text-5xl;
+
+      & + p {
+        @apply mb-3 xl:mb-6 text-base xl:text-xl 2xl:text-2xl 4xl:text-3xl text-center max-w-3xl 2xl:max-w-4xl mx-auto;
+      }
+    }
+
+    h3 {
+      @apply mb-3 2xl:mb-6 text-2xl 2xl:text-3xl 4xl:text-4xl text-center max-w-2xl 4xl:max-w-3xl mx-auto;
+    }
+
+    h4,
+    h5,
+    h6 {
+      @apply font-sans text-primary text-2xl 3xl:text-4xl;
+    }
+
+    p,
+    li {
+      @apply font-sans text-accent text-sm md:text-base 4xl:text-2xl text-left leading-relaxed mb-6;
+    }
+  }
+}

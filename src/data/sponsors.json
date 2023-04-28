@@ -1,0 +1,22 @@
+[
+  {
+    "name": "MetaCartel",
+    "logo": "metacartel.png",
+    "url": "https://metacartel.xyz"
+  },
+  {
+    "name": "MetaFam",
+    "logo": "metagame.png",
+    "url": "https://metagame.wtf"
+  },
+  {
+    "name": "MetaFactory",
+    "logo": "MetaFactory.jpg",
+    "url": "https://metafactory.ai"
+  },
+  {
+    "name": "Your DAO?",
+    "logo": "mystery.png",
+    "url": "/event-sponsors"
+  }
+]

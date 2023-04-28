@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .animate-wave {
+    animation: wave 8s infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  .animate-wave2 {
+    animation: wave2 6s infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  .animate-float {
+    animation: float 8s infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  .animate-float2 {
+    animation: float 6s infinite;
+    animation-timing-function: ease-in-out;
+  }
+
+  @keyframes wave {
+    0% {
+      transform: rotateZ(3deg) translateZ(-1px);
+    }
+    25% {
+      transform: rotateZ(-4deg) translateZ(-1px);
+    }
+    50% {
+      transform: rotateZ(2deg) translateZ(-1px);
+    }
+    75% {
+      transform: rotateZ(-6deg) translateZ(-1px);
+    }
+    100% {
+      transform: rotateZ(3deg) translateZ(-1px);
+    }
+  }
+
+  @keyframes wave2 {
+    0% {
+      transform: rotateZ(0deg) translateZ(-1px);
+    }
+    25% {
+      transform: rotateZ(-3deg) translateZ(-1px);
+    }
+    50% {
+      transform: rotateZ(3deg) translateZ(-1px);
+    }
+    75% {
+      transform: rotateZ(-1deg) translateZ(-1px);
+    }
+    100% {
+      transform: rotateZ(0deg) translateZ(-1px);
+    }
+  }
+
+  @keyframes float {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-20px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
+  }
+
+  @keyframes float2 {
+    0% {
+      transform: translatey(0px);
+    }
+    50% {
+      transform: translatey(-50px);
+    }
+    100% {
+      transform: translatey(0px);
+    }
+  }
+}

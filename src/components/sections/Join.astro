@@ -1,0 +1,69 @@
+---
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Plants from '../widgets/Plants.astro';
+import { CountdownTimer } from '~/components/widgets/CountdownTimer';
+import { DateTime } from 'luxon';
+import { eventStartDate } from '~/config.mjs';
+import Section from '~/components/core/Section.astro';
+
+export const isLive = DateTime.now() > DateTime.fromISO(eventStartDate);
+export const expiredMessage = `MetaFest is live!
+
+We hope you made it! If you didn't, you can join us on Discord and watch the talks on YouTube. [Check the schedule](/schedule) and watch the live stream!`;
+---
+
+<!-- <section
+  id="join"
+  class="section bg-none relative xl:pt-16 xl:pb-56 3xl:pb-64 4xl:pb-[35vh]"
+  x-data="{shown: false}"
+  x-intersect:once="shown = true"
+> -->
+<Section sectionId="join">
+  <div class="section__content relative z-20">
+    <h4
+      class="text-4xl 3xl:text-6xl font-heading invisible mb-10 xl:mb-14"
+      x-show="shown"
+      x-bind:class="{ 'invisible': !shown, 'visible': shown }"
+      x-transition:enter="transition ease-out duration-200"
+      x-transition:enter-start="opacity-0 transform translate-y-8"
+      x-transition:enter-end="opacity-100 transform translate-y-0"
+      x-transition:leave="transition ease-in duration-200"
+      x-transition:leave-start="opacity-100 transform translate-y-0"
+      x-transition:leave-end="opacity-0 transform translate-y-8"
+    >
+      MetaFest, manifest the future.
+    </h4>
+
+    <div class="w-full xl:max-w-7xl mx-auto mb-10 xl:mb-14">
+      <div
+        class="event-info flex flex-col md:flex-row items-start justify-between space-y-3 md:space-y-0 md:space-x-5 xl:space-x-10"
+      >
+        <div class="text-center w-full md:w-1/3">
+          <h5 class="font-heading">What?</h5>
+          <p class="text-sm xl:text-2xl text-center text-off-white capitalize">
+            Talks & performances<br /> Panels & workshops<br /> games & activities
+          </p>
+        </div>
+        <div class="text-center w-full md:w-1/3">
+          <h5 class="font-heading">Where?</h5>
+          <p class="text-sm xl:text-2xl text-center text-off-white">Fort Punta Christo<br /> Pula<br /> Croatia</p>
+        </div>
+
+        <div class="text-center w-full md:w-1/3">
+          <h5 class="font-heading">When?</h5>
+          <p class="text-sm xl:text-2xl mb-0 text-off-white uppercase text-center">Warmup 11 - 15 Aug</p>
+          <p class="text-sm xl:text-2xl mb-0 text-off-white font-semibold uppercase text-center">
+            Main event 16 - 18 Aug
+          </p>
+          <p class="text-sm xl:text-2xl mb-0 text-off-white uppercase text-center">Bus Trip 19 - 24 Aug</p>
+        </div>
+      </div>
+    </div>
+
+    <CountdownTimer to={eventStartDate} expiredMessage={expiredMessage} client:load />
+    {isLive && <CallToAction isLive />}
+    {!isLive && <CallToAction />}
+  </div>
+
+  <Plants />
+</Section>

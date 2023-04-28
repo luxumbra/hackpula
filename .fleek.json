@@ -1,0 +1,14 @@
+{
+  "site": {
+    "id": "be4a9eb2-1387-4eaa-aaeb-a8f84fdce8eb",
+    "team": "luxumbra-team",
+    "platform": "ipfs",
+    "source": "ipfs",
+    "name": "shiny-cell-9843"
+  },
+  "build": {
+    "baseDir": "",
+    "publicDir": "dist",
+    "rootDir": ""
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro", // Enable .astro
+    "typescript", // Enable .ts
+    "typescriptreact" // Enable .tsx
+  ],
+  "prettier.documentSelectors": ["**/*.astro"],
+  "editor.codeActionsOnSave": {
+    "source.formatDocument": true,
+    "source.fixAll": true
+  },
+  "files.associations": {
+    "*.astro": "astro",
+    "*.svg": "html"
+  },
+  "[astro]": {
+    "editor.defaultFormatter": "astro-build.astro-vscode"
+  },
+  "editor.formatOnSave": true,
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "editor.insertSpaces": true
+}

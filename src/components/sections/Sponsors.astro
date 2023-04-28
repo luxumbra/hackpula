@@ -1,0 +1,70 @@
+---
+import { Image } from '@astrojs/image/components';
+import { motion } from 'framer-motion';
+import Section from '~/components/core/Section.astro';
+
+import sponsors from '~/data/sponsors.json';
+---
+
+<Section sectionId="sponsors">
+  <div class="section__content">
+    <div
+      x-show="shown"
+      x-bind:class="{ 'invisible': !shown }"
+      x-transition:enter="transition ease-out duration-500"
+      x-transition:enter-start="opacity-0 transform translate-y-8"
+      x-transition:enter-end="opacity-100 transform translate-y-0"
+      x-transition:leave="transition ease-in duration-500"
+      x-transition:leave-start="opacity-100 transform translate-y-0"
+      x-transition:leave-end="opacity-0 transform translate-y-8"
+    >
+      <h2>Partners &amp; Sponsors</h2>
+      <p>
+        MetaFest is a collaboration between MetaGame & MetaCartel as well as other local & global partners - join us!
+      </p>
+
+      <div class="speakers-list partners-list max-w-7xl mb-10">
+        <ul class="">
+          {
+            sponsors &&
+              sponsors.length > 0 &&
+              sponsors.map((sponsor, i) => {
+                const image = `/assets/images/sponsors/${sponsor.logo}`;
+                const delay = parseFloat(((i + 1) * 0.1).toFixed(1));
+
+                return (
+                  <motion.li
+                    className="partner rounded-2xl bg-gradient-to-br from-secondary-alt via-secondary-alt to-transparent"
+                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ duration: 0.2, delay: delay }}
+                    viewport={{ once: true }}
+                    client:load
+                  >
+                    <a href={sponsor.url} class="flex flex-col p-3 lg:p-5 text-center" title={sponsor.name}>
+                      <Image
+                        class="rounded-full border-2 border-primary mx-auto"
+                        src={image}
+                        aspectRatio={1}
+                        alt={sponsor.name}
+                        width="100"
+                        height="100"
+												loading={'lazy'}
+												format={'webp'}
+                      />
+                      <span>{sponsor.name}</span>
+                    </a>
+                  </motion.li>
+                );
+              })
+          }
+        </ul>
+      </div>
+
+      <a
+        class="btn btn-ghost text-secondary mb-4 sm:mb-0 bg-gradient-tertiary text-base xs:text-2xl md:text-2xl px-5 py-6 md:px-8 md:py-8 leading-[0] inline-flex content-center rounded-xl hover:scale-95 transition-all delay-100 duration-200 ease-in-out border-2"
+        href="/event-sponsors">Sponsorship info</a
+      >
+    </div>
+  </div>
+</Section>

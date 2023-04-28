@@ -1,0 +1,31 @@
+---
+import Section from '../core/Section.astro';
+import Tabs from '../widgets/Tabs.astro';
+---
+
+<Section sectionId="activities">
+  <div class="section__content">
+    <!-- <div
+      x-show="shown"
+      class="invisible"
+      x-bind:class="{ 'invisible': !shown }"
+      x-transition:enter="transition ease-out duration-500"
+      x-transition:enter-start="opacity-0 transform translate-y-8"
+      x-transition:enter-end="opacity-100 transform translate-y-0"
+      x-transition:leave="transition ease-in duration-500"
+      x-transition:leave-start="opacity-100 transform translate-y-0"
+      x-transition:leave-end="opacity-0 transform translate-y-8"
+    > -->
+      <h2>Activities</h2>
+      <div class="flex items-start flex-col xl:flex-row flex-nowrap xl:space-x-6">
+        <div class="w-full xl:w-1/4 text-left">
+					<p class="text-left text-lg xl:text-base 4xl:text-lg">The main event goes for 3 days but it’s not the only opportunity in town!</p>
+					<p>Venture out to discover adrenaline-pumping activities like quad-biking, scuba diving, and DAO vs DAO paintball battles and more.</p>
+        </div>
+        <div class="w-full xl:w-3/4 xl:flex-shrink-0">
+          <Tabs />
+        </div>
+      </div>
+    <!-- </div> -->
+  </div>
+</Section>

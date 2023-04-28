@@ -1,0 +1,14 @@
+---
+import { getRelativeLink } from '~/utils/permalinks';
+---
+
+<link rel="apple-touch-icon" sizes="76x76" href={getRelativeLink('/apple-touch-icon.png')}>
+<link rel="icon" type="image/png" sizes="32x32" href={getRelativeLink('/favicon-32x32.png')}>
+<link rel="icon" type="image/png" sizes="16x16" href={getRelativeLink('/favicon-16x16.png')}>
+<link rel="manifest" href={getRelativeLink('/site.webmanifest')}>
+<link rel="mask-icon" href={getRelativeLink('/safari-pinned-tab.svg')}color="#0c1728">
+<meta name="msapplication-TileColor" content="#0c1728">
+<meta name="theme-color" content="#0c1728">
+<link rel="shortcut icon" href={getRelativeLink('/favicon.png')} />
+<link rel="icon" type="image/svg+xml" href={getRelativeLink('/favicon.svg')} />
+<link rel="mask-icon" href={getRelativeLink('/favicon.svg')} color="#8D46E7" />

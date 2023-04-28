@@ -1,0 +1,11 @@
+---
+import { isTest } from '~/config.mjs';
+
+---
+
+{isTest && (
+	<div class="fixed top-0 h-6 py-2 w-full left-0 text-white z-50 flex items-center pointer-events-none">
+		<p class="relative text-xs md:text-sm text-center mx-auto text-white font-normal md:font-bold mb-0 z-10 w-full">This is the {isTest && 'test'} site. Only test purchases should be made here.</p>
+		<div class="w-full h-full inset-0 bg-orange-500 opacity-60 absolute z-0" />
+	</div>
+)}

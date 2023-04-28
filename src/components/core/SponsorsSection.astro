@@ -1,0 +1,48 @@
+---
+// import { Icon } from 'astro-icon';
+import { Icon } from 'astro-icon';
+import Section from '../core/Section.astro';
+import Markdown from '@astrojs/markdown-component';
+
+import { v4 as uuid } from 'uuid';
+
+export interface SponsorsSectionProps {
+  title: string;
+  precis?: string;
+  full?: boolean;
+	alt?: boolean;
+	sectionId?: string;
+}
+
+const { alt, full, title, precis, sectionId } = Astro.props as SponsorsSectionProps;
+const id = uuid();
+const contentStyles = alt ? 'section__content--alt flex justify-center' : 'section__content flex justify-center';
+---
+
+<Section sectionId={sectionId ?? id}>
+  <div class={contentStyles}>
+    <div
+      x-show="shown"
+      class="invisible"
+      x-bind:class="{ 'invisible': !shown }"
+      x-transition:enter="transition ease-out duration-500"
+      x-transition:enter-start="opacity-0 transform translate-y-8"
+      x-transition:enter-end="opacity-100 transform translate-y-0"
+      x-transition:leave="transition ease-in duration-500"
+      x-transition:leave-start="opacity-100 transform translate-y-0"
+      x-transition:leave-end="opacity-0 transform translate-y-8"
+    >
+      <h2>{title}</h2>
+      {precis && <Markdown>{precis}</Markdown>}
+      {!full ? (
+        <div class="max-w-3xl 2xl:max-w-4xl">
+          <slot />
+        </div>
+      ) : (
+        <div class="w-full mx-auto">
+        <slot />
+        </div>
+      )}
+    </div>
+  </div>
+</Section>
