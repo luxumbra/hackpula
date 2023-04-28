@@ -12,8 +12,8 @@ export interface HeroProps {
   titleLn2: string;
   subtitle: string;
   dates: string;
-  ctaUrl: string;
-  ctaUrl2: string;
+  ctaUrl?: string;
+  ctaUrl2?: string;
 }
 
 const { titleLn1, titleLn2, subtitle, dates, ctaUrl, ctaUrl2 } = Astro.props as HeroProps;
@@ -40,12 +40,30 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl, ctaUrl2 } = Astro.props as 
           client:load
         > -->
         <div class="cta-container flex flex-col gap-y-5 w-full p-3">
-          <a href={ctaUrl} target="_blank" rel="noreferrer" class="btn btn-ghost btn-block btn-brand-ghost text-primary"
-            ><span>Notify Me</span>
-          </a>
-          <a href={ctaUrl2} target="_blank" rel="noreferrer" class="btn btn-ghost btn-block btn-brand text-secondary"
-            >Apply</a
-          >
+          {
+            ctaUrl && (
+              <a
+                href={ctaUrl}
+                target="_blank"
+                rel="noreferrer"
+                class="btn btn-ghost btn-block btn-brand-ghost text-primary"
+              >
+                <span>Notify Me</span>
+              </a>
+            )
+          }
+          {
+            ctaUrl2 && (
+              <a
+                href={ctaUrl2}
+                target="_blank"
+                rel="noreferrer"
+                class="btn btn-ghost btn-block btn-brand text-secondary"
+              >
+                Apply
+              </a>
+            )
+          }
         </div>
         <!-- </motion.div> -->
       </div>
