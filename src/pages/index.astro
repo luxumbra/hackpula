@@ -17,20 +17,14 @@ const heroCopy: HeroProps = {
   titleLn1: 'Hack Pula',
   titleLn2: '',
   subtitle: 'Coming soon',
-  ctaUrl: '/#join',
-  cta2Url: '/#join',
+  ctaUrl: 'https://form.typeform.com/to/puqTWK9Z',
+  ctaUrl2: 'https://form.typeform.com/to/puqTWK9Z',
   dates: 'August 13-15th',
 };
 ---
 
 <Layout {meta}>
-  <Hero
-    titleLn1={heroCopy.titleLn1}
-    titleLn2={heroCopy.titleLn2}
-    subtitle={heroCopy.subtitle}
-    ctaUrl={heroCopy.ctaUrl}
-    dates={heroCopy.dates}
-  />
+  <Hero {...heroCopy} />
   <Plants />
   <ThreeD client:load />
 </Layout>
