@@ -23,7 +23,7 @@ export const SITE = {
 	trailingSlash: false,
 	eventDates: 'August 13-15th, 2023',
 	title: 'MetaFest: Hack Pula',
-	description: `MetaFest: Hack Pula is a 3-day hackathon event in Pula, Croatia. Happening on August 13-15th, 2023 - The even is sponsored by MetaCartel, Gnosis, Celo to name a few. Bounties aplenty and a chance to win up to $10,000 in prizes.`,
+	description: `MetaFest: Hack Pula, August 13-15th - Join us for the first Balkan cooperative hackathon where we are partnering with Tech City Pula for a 3 day hackathon. Brought to you by Celo, Gnosis, MetaCartel and more!`,
 };
 
 export const BLOG = {
