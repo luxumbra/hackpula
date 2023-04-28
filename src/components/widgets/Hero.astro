@@ -20,7 +20,7 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl, ctaUrl2 } = Astro.props as 
 ---
 
 <div id="start" class="hero relative flex w-full h-screen p-0 overflow-hidden">
-  <div class="hero__content h-full w-full lg:w-10/12 px-3 2xl:px-16 py-28 justify-start items-center">
+  <div class="hero__content h-full w-full lg:w-10/12 px-3 2xl:px-16 py-20 xs:py-36 xl:py-28 justify-start items-center">
     <motion.div
       className="hero__content__primary"
       initial={{ opacity: 0, y: 5, scale: 0.95 }}
@@ -45,7 +45,7 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl, ctaUrl2 } = Astro.props as 
         </div>
         <!-- </motion.div> -->
       </div>
-      <p class="text-white font-normal text-lg text-center">{subtitle}</p>
+      <p class="text-white font-normal text-sm xl:text-base text-center mt-2">{subtitle}</p>
       <!-- <motion.div
         initial={{ opacity: 0, y: 2 }}
         whileInView={{ opacity: 1, y: 0 }}
