@@ -611,13 +611,13 @@
   .btn-brand {
     @apply text-secondary-dark rounded-lg text-3xl;
 
-    background: linear-gradient(90deg, #1f8975 0, #49a872 44.57%, #82d36e 99.99%);
+    background: linear-gradient(90deg, #1f8975 0, #49a872 44.57%, #82d36e 100%);
   }
 
   .btn-brand-ghost {
     @apply relative text-primary rounded-lg text-3xl;
 
-    background: linear-gradient(90deg, #1f8975 0, #49a872 44.57%, #82d36e 99.99%);
+    background: linear-gradient(90deg, #1f8975 0, #49a872 44.57%, #82d36e 100%);
     overflow: hidden;
 
     span {
@@ -626,10 +626,8 @@
 
     &::after {
       content: '';
-      @apply absolute inset-[2px] z-0;
+      @apply absolute inset-[1px] rounded-lg z-0;
       background: rgba(14, 65, 55, 1);
-
-      border-radius: 8px;
     }
   }
 }
