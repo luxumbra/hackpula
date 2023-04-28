@@ -611,13 +611,13 @@
   .btn-brand {
     @apply text-secondary-dark rounded-lg text-3xl;
 
-    background: linear-gradient(90deg, #1f8975 0.01%, #49a872 44.57%, #82d36e 99.99%);
+    background: linear-gradient(90deg, #1f8975 0, #49a872 44.57%, #82d36e 99.99%);
   }
 
   .btn-brand-ghost {
     @apply relative text-primary rounded-lg text-3xl;
 
-    background: linear-gradient(90deg, #1f8975 0.01%, #49a872 44.57%, #82d36e 99.99%);
+    background: linear-gradient(90deg, #1f8975 0, #49a872 44.57%, #82d36e 99.99%);
     overflow: hidden;
 
     span {

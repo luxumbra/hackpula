@@ -7,14 +7,14 @@ import './plants.css';
 
 <motion.div
   className="plants absolute inset-0 w-full min-h-full overflow-hidden z-10 pointer-events-none"
-  initial={{ opacity: 0, y: 20 }}
-  animate={{ opacity: 1, y: 0 }}
+  initial={{ opacity: 0 }}
+  animate={{ opacity: 1 }}
   transition={{ duration: 0.3, delay: 0.1 }}
   viewport={{ once: false }}
   client:load
 >
   <Plant
-    plantName="hackpula-plants"
+    plantName="plants-group-small"
     size="w-[200%] md:w-full"
     position={{ x: '-left-[50%] md:left-[0%]', y: 'bottom-0', z: 'z-[2]' }}
     className="pointer-events-none overflow-y-visible"

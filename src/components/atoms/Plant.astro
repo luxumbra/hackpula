@@ -23,13 +23,9 @@ const plant = `plants/${plantName}`;
 <script>
   const plants = document.querySelector('.plants');
   const particles = plants.querySelectorAll('svg > g > circle');
-  const maxRadius = 20;
+  const maxRadius = 10;
   const maxX = plants.clientWidth - maxRadius;
   const maxY = plants.clientHeight - maxRadius;
-
-  // const random = (min, max) => {
-  //   return Math.random() * (max - min) + min;
-  // };
 
   const startTime = Date.now();
 
@@ -38,15 +34,16 @@ const plant = `plants/${plantName}`;
       time = (currentTime - startTime) / 1000;
 
     particles.forEach((particle, index) => {
-      const speed = 0.005;
+      console.log(particle, index);
+      const speed = 0.01;
       const amplitude = 10;
-      const x = Math.sin(time * speed + index * 2) * amplitude;
-      const y = Math.cos(time * speed + index * 10) * amplitude;
-      // const dx = Math.min(maxX, Math.max(-maxX, x));
+      const x = Math.sin(time * speed + index * -5) * amplitude;
+      const y = Math.cos(time * speed + index * 20) * amplitude;
+      const dx = Math.min(maxX, Math.max(-maxX, x));
       const dy = Math.min(maxY, Math.max(-maxY, y));
       const scale = Math.sin(time * speed + index) * 0.5 + 1;
 
-      particle.setAttribute('transform', `translate(${x}, ${dy}) scale(${scale})`);
+      particle.setAttribute('transform', `translate(${dx}, ${dy}) scale(${scale})`);
     });
     requestAnimationFrame(animate);
   };
