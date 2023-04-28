@@ -23,20 +23,34 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl, ctaUrl2 } = Astro.props as 
   <div class="hero__content h-full w-full lg:w-10/12 px-3 2xl:px-16 py-28 justify-start items-center">
     <motion.div
       className="hero__content__primary"
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
+      initial={{ opacity: 0, y: 5, scale: 0.95 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
       client:load
     >
       <div class="event-info w-full">
         <Icon name="logo" class="logo" />
         <h1 class="hero__title">{titleLn1}<br /> {titleLn2}</h1>
         <p class="hero__dates"><Icon name="calendar" />{dates}</p>
+        <!-- <motion.div
+
+          initial={{ opacity: 0, y: 8 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3, delay: 0.6 }}
+          client:load
+        > -->
         <div class="cta-container flex flex-col gap-y-5 w-full p-3">
           <button class="btn btn-ghost btn-block btn-brand-ghost text-primary"><span>Notify Me</span></button>
           <button class="btn btn-ghost btn-block btn-brand text-secondary">Apply</button>
         </div>
+        <!-- </motion.div> -->
       </div>
       <p class="text-white font-normal text-lg text-center">{subtitle}</p>
+      <!-- <motion.div
+        initial={{ opacity: 0, y: 2 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1, delay: 0.4 }}
+      /> -->
     </motion.div>
   </div>
   <motion.div

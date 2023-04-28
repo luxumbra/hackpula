@@ -627,6 +627,7 @@
     &::after {
       content: '';
       @apply absolute inset-[1px] rounded-lg z-0;
+
       background: rgba(14, 65, 55, 1);
     }
   }
