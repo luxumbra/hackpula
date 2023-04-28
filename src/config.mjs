@@ -3,14 +3,14 @@ import { DateTime } from "luxon";
 
 export const paycekProfileCode = import.meta.env.PUBLIC_PAYCEK_PROFILE_CODE;
 export const paycekSecret = import.meta.env.PUBLIC_PAYCEK_SECRET_KEY;
-
-export const isDev = import.meta.env.PUBLIC_HOSTNAME === 'http://localhost:1145';
-export const isProd = import.meta.env.PUBLIC_HOSTNAME === 'https://metafest.wtf';
+export const prodSite = 'https://hackpula.metafest.wtf';
+export const isDev = import.meta.env.PUBLIC_HOSTNAME === 'http://hackpula.local:1188';
+export const isProd = import.meta.env.PUBLIC_HOSTNAME === prodSite;
 export const isTest = !(isDev || isProd) ?? false;
 
-export const HOSTNAME = import.meta.env.PUBLIC_HOSTNAME ?? 'https://metafest.wtf';
+export const HOSTNAME = import.meta.env.PUBLIC_HOSTNAME ?? prodSite;
 
-export const uri = isDev ? 'https://0017-146-70-48-3.eu.ngrok.io' : 'https://test.metafest.wtf';
+export const uri = isDev ? 'https://0017-146-70-48-3.eu.ngrok.io' : 'https://test.hackpula.metafest.wtf';
 export const currencySymbol = '€';
 export const currencyTicker = 'EUR';
 
@@ -23,13 +23,9 @@ export const SITE = {
 	origin: HOSTNAME ?? 'https://metafest.wtf',
 	basePathname: '/',
 	trailingSlash: false,
-
-	title: 'MetaFest Croatia',
-	description:
-		`A bit of a conference, a bit of a festival + a shitload of fun; Talks, workshops, games & music; a festival for DAOists & Regens. Earlybird discounts available until ${earlyBirdEndsFormatted}.`,
-
-	googleAnalyticsId: 'G-4436889R1F',
-	googleSiteVerificationId: 'orcPxI47GSa-cRvY11tUe6iGg2IO_RPvnA1q95iEM3M',
+	eventDates: 'August 13-15th, 2023',
+	title: 'MetaFest: Hack Pula',
+	description: `MetaFest: Hack Pula is a 3-day hackathon event in Pula, Croatia. Happening on ${this.eventDates} - The even is sponsored by MetaCartel, Gnosis, Celo to name a few. Bounties aplenty and a chance to win up to $10,000 in prizes.`,
 };
 
 export const BLOG = {
