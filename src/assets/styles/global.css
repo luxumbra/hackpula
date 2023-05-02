@@ -82,10 +82,10 @@
       @apply flex flex-col text-center z-20;
 
       &__primary {
-        @apply text-center w-full md:max-w-[460px] md:space-y-3;
+        @apply text-center w-full md:max-w-[460px] md:space-y-3 4xl:max-w-[610px];
 
         .logo {
-          @apply transition-all duration-200 w-36 xs:w-52 mb-8;
+          @apply transition-all duration-200 w-36 xs:w-52 4xl:w-72 mb-8;
 
           path {
             @apply !fill-current !text-primary transition-colors duration-200;
@@ -105,7 +105,7 @@
     }
 
     &__title {
-      @apply text-5xl xs:text-7xl lg:text-8xl font-normal text-white text-center;
+      @apply text-5xl xs:text-7xl 2xl:text-8xl 4xl:text-9xl font-normal text-white text-center;
     }
 
     &__image {
@@ -115,10 +115,10 @@
     }
 
     &__dates {
-      @apply relative inline-flex items-center justify-between font-heading text-white text-2xl xs:text-3xl lg:text-5xl p-0 font-normal  tracking-tight capitalize;
+      @apply relative inline-flex items-center justify-between font-heading text-white text-2xl xs:text-3xl 2xl:text-5xl 4xl:text-7xl p-0 font-normal tracking-tight capitalize;
 
       svg {
-        @apply relative block w-6 xs:w-8 lg:w-10 h-auto text-white;
+        @apply relative block w-6 xs:w-8 2xl:w-10 4xl:w-16 h-auto text-white;
 
         path {
           path: currentColor;
@@ -131,7 +131,7 @@
     }
 
     .event-info {
-      @apply flex flex-col items-center justify-center space-y-3 xs:space-y-7;
+      @apply flex flex-col items-center justify-center space-y-3 xs:space-y-7 xl:space-y-3 2xl:space-y-7;
 
       &__item {
       }
@@ -197,347 +197,6 @@
 
     &__decoration {
       @apply z-0;
-    }
-  }
-
-  /**
-	 * Tiers, Expansion Packs, and Ticket Methods
-	 */
-  .tiers,
-  .expansion-packs,
-  .ticket-methods {
-    .tier,
-    .expansion-pack {
-      @apply mx-auto transform transition-all duration-200 ease-in-out min-h-full h-full flex flex-col flex-1 mb-8 xl:mb-0;
-
-      &__header {
-        @apply flex flex-row justify-between;
-      }
-
-      ul {
-        li {
-          @apply flex justify-start items-center space-x-0 mb-3 text-off-white md:text-accent w-11/12;
-
-          & > svg {
-            @apply flex-shrink-0 w-8;
-          }
-        }
-      }
-    }
-
-    .ticket-method {
-      @apply transform transition-all duration-200 ease-in-out flex flex-col mb-8 xl:mb-0;
-
-      button,
-      .btn {
-        @apply mx-auto text-secondary-dark hover:no-underline hover:text-secondary-dark;
-
-        &[aria-disabled='true'] {
-          @apply bg-secondary-dark-alpha-60 text-secondary-dark cursor-not-allowed;
-        }
-      }
-
-      a {
-        @apply text-primary hover:underline hover:text-off-white transition-all duration-200 ease-in-out;
-
-        &[href^='https://']
-        {
-          &::after {
-            @apply inline-flex ml-1 bg-primary w-4 h-4;
-
-            mask-image: url('https://api.iconify.design/mdi/open-in-new.svg');
-            mask-size: contain;
-            mask-repeat: no-repeat;
-            content: '';
-          }
-        }
-
-        &[href^='http://']
-        {
-          @apply text-red-500;
-          &::before {
-            @apply inline-flex mr-1 bg-red-500 w-4 h-4;
-
-            mask-image: url('https://api.iconify.design/mdi/lock-off-outline.svg');
-            mask-size: contain;
-            mask-repeat: no-repeat;
-            content: '';
-          }
-          &::after {
-            @apply inline-flex ml-1 bg-red-500 w-4 h-4;
-
-            mask-image: url('https://api.iconify.design/mdi/open-in-new.svg');
-            mask-size: contain;
-            mask-repeat: no-repeat;
-            content: '';
-          }
-        }
-      }
-
-      img {
-        @apply inline-flex w-auto h-5 mx-1;
-      }
-    }
-  }
-
-  /**
-	 * Carousel
-	 */
-  .carousel {
-    @apply relative w-full min-h-[66vh] md:min-h-[50vh] mt-16 md:mt-32 xl:mt-48;
-
-    overflow: unset !important;
-
-    .swiper-slide {
-      @apply h-full;
-      @apply transition-all duration-200 ease-in-out;
-
-      &__content {
-        @apply text-left py-10 flex items-center content-center bg-gradient-to-b md:bg-gradient-to-t from-secondary-dark via-secondary-dark-alpha-60 to-transparent w-full z-20;
-
-        svg {
-          @apply translate-y-10 opacity-0 transition-all duration-200 delay-200 ease-in-out;
-        }
-
-        h4,
-        p {
-          @apply text-sm lg:text-lg text-primary translate-y-10 opacity-0 transition-all duration-200 delay-200 ease-in-out;
-        }
-      }
-
-      &-active {
-        .swiper-slide__content {
-          h4,
-          p,
-          svg {
-            @apply translate-y-0 opacity-100;
-          }
-        }
-      }
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-      @apply absolute bottom-0 md:top-1/2 transform md:-translate-y-1/2 z-20;
-      @apply text-primary;
-
-      svg {
-        @apply scale-150;
-
-        path {
-          @apply stroke-current fill-current;
-        }
-      }
-
-      &::after {
-        content: '';
-      }
-    }
-    .swiper-pagination {
-      @apply absolute !top-0 bottom-auto md:!bottom-0 md:!top-3 left-0 w-full z-20;
-    }
-
-    .swiper-pagination-bullet {
-      @apply w-4 h-4 bg-transparent opacity-100 border-[1px] border-primary rounded-full;
-
-      &-active {
-        @apply bg-primary;
-      }
-    }
-  }
-
-  .speakers-list {
-    @apply mt-10;
-
-    ul {
-      @apply grid grid-cols-2  lg:grid-cols-6 gap-3 lg:gap-4 3xl:gap-6;
-
-      li {
-        @apply relative items-center overflow-hidden mb-0;
-
-        background-image: url('../images/hammered-bg.png');
-
-        @apply bg-top bg-cover;
-
-        /* &::after {
-          content: '';
-          @apply absolute bottom-0 left-0 w-full h-[1px] z-20;
-
-          background-image: url('../images/section-divider.png');
-          @apply bg-bottom bg-cover;
-        } */
-      }
-
-      a {
-        @apply space-y-3 capitalize focus:outline-dashed hover:no-underline	hover:scale-105 focus:outline-primary-alpha-60 focus:scale-105 transition-all duration-200 ease-in-out;
-
-        &:not(.btn) {
-          &:hover {
-            @apply no-underline;
-          }
-        }
-        span {
-          @apply text-xs lg:text-sm 3xl:text-base whitespace-nowrap;
-        }
-      }
-    }
-
-    picture {
-      img {
-        @apply w-full h-full object-cover m-0;
-      }
-    }
-  }
-
-  /* .partners-list {
-    .partner {
-      background-image: url('../images/hammered-bg.png');
-
-      @apply bg-top bg-cover;
-    }
-  	} */
-
-  .mobile-menu {
-    menu {
-      @apply bg-gradient-to-b from-accent-alpha-60 via-transparent to-transparent text-secondary-dark uppercase text-center backdrop-blur-none;
-
-      .logo {
-        path {
-          @apply fill-current text-primary-alpha-60;
-        }
-      }
-    }
-
-    /* &::after {
-			content: '';
-
-			@apply absolute inset-0 w-full h-full backdrop-blur-2xl z-0;
-		} */
-  }
-
-  .chat {
-    .chat__messages {
-      .chat__message {
-        @apply max-w-[85%] flex flex-col items-start space-y-2 mb-3;
-      }
-
-      .chat__message__marker {
-        svg {
-          @apply w-[41px];
-        }
-      }
-    }
-  }
-
-  .mf-modal {
-    background-image: url('../images/hero/image-34.jpg');
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: fit;
-
-    & > div {
-      @apply p-2 md:p-4;
-
-      & > div {
-        @apply relative dark:bg-transparent backdrop-blur-sm rounded-2xl bg-gradient-to-b dark:from-secondary dark:to-secondary-dark-alpha-30  shadow-2xl shadow-black;
-      }
-
-      .modal-header {
-        @apply p-4 pb-0 md:p-6;
-      }
-
-      .modal-body {
-        @apply p-4 md:p-6;
-      }
-
-      &::after {
-        content: '';
-        @apply absolute -inset-[0px] rounded-2xl bg-gradient-to-b from-accent via-transparent to-transparent -z-10 pointer-events-none;
-      }
-
-      h3 {
-        @apply mb-0;
-      }
-
-      a {
-        @apply text-primary;
-      }
-
-      table {
-        @apply -translate-x-2 md:translate-x-0;
-        th {
-          @apply text-xs md:text-sm font-normal md:font-bold;
-        }
-        td {
-          @apply text-xs md:text-sm;
-        }
-      }
-    }
-  }
-
-  .about-card {
-    ul {
-      @apply mb-0;
-    }
-  }
-
-  .countdown-timer {
-    @apply relative;
-
-    &__counter {
-      @apply flex items-center space-x-2 mx-auto z-0;
-
-      &--a11y {
-        @apply absolute flex items-center space-x-2 mx-auto pointer-events-auto z-20 cursor-text border border-primary-alpha-30 rounded-2xl overflow-hidden select-text;
-
-        * {
-          @apply text-accent;
-
-          &:hover {
-            @apply text-primary;
-          }
-        }
-      }
-
-      &__item {
-        @apply flex flex-col items-center space-y-0;
-
-        .countdown {
-          @apply relative text-4xl lg:text-7xl font-normal  text-[var(--timerColor)] font-heading tracking-wide;
-
-          &::after {
-            content: '';
-            @apply absolute inset-0 w-full h-full bg-gradient-secondary-dark;
-          }
-
-          & + span {
-            @apply text-xs lg:text-sm font-normal lg:font-bold text-off-white uppercase -translate-y-2 lg:-translate-y-3;
-          }
-        }
-      }
-    }
-
-    &__message {
-      @apply text-center text-xl lg:text-base font-normal max-w-5xl bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent;
-
-      p {
-        @apply text-center text-xl lg:text-base font-normal  bg-clip-text text-transparent bg-gradient-to-br from-primary to-accent;
-
-        &:first-of-type {
-          @apply text-center text-xl lg:text-xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
-        }
-      }
-    }
-
-    .expired-copy {
-      @apply max-w-3xl;
-      p {
-        @apply text-center text-xl lg:text-2xl font-normal text-accent;
-
-        &:first-of-type {
-          @apply text-center text-xl lg:text-4xl font-bold  bg-clip-text text-transparent bg-gradient-to-t from-primary to-accent;
-        }
-      }
     }
   }
 }

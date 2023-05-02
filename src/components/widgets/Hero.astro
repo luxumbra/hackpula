@@ -20,7 +20,9 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl, ctaUrl2 } = Astro.props as 
 ---
 
 <div id="start" class="hero relative flex w-full h-screen p-0 overflow-hidden">
-  <div class="hero__content h-full w-full lg:w-10/12 px-3 2xl:px-16 py-20 xs:py-36 xl:py-28 justify-start items-center">
+  <div
+    class="hero__content h-full w-full lg:w-10/12 px-3 2xl:px-16 py-20 xs:py-36 xl:py-16 2xl:py-28 4xl:py-36 justify-start items-center"
+  >
     <motion.div
       className="hero__content__primary"
       initial={{ opacity: 0, y: 5, scale: 0.95 }}
@@ -39,7 +41,7 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl, ctaUrl2 } = Astro.props as 
           transition={{ duration: 0.3, delay: 0.6 }}
           client:load
         > -->
-        <p class="text-white font-normal text-sm xl:text-base text-center my-2">{subtitle}</p>
+        <p class="text-white font-normal text-sm xl:text-base 4xl:text-2xl text-center my-2">{subtitle}</p>
 
         <div class="cta-container flex flex-col gap-y-5 w-full p-3">
           {
@@ -48,7 +50,7 @@ const { titleLn1, titleLn2, subtitle, dates, ctaUrl, ctaUrl2 } = Astro.props as 
                 href={ctaUrl}
                 target="_blank"
                 rel="noreferrer"
-                class="btn btn-ghost btn-block btn-brand-ghost text-primary"
+                class="btn btn-ghost btn-block btn-brand-ghost text-primary 4xl:text-2xl 4xl:btn-xl "
               >
                 <span>Notify Me</span>
               </a>
